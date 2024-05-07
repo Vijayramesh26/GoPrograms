@@ -1,0 +1,7 @@
+[[apiDetailsArr]]
+APIName = "Google"  # APIName field of the first structure
+APIURL = "https://www.google.com/"        # APIURL field of the first structure
+
+[[apiDetailsArr]]
+APIName = "Apple"    # APIName field of the second structure
+APIURL = "https://www.apple.com/in/"        # APIURL field of the second structure
