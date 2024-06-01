@@ -211,3 +211,48 @@ func InsertRecords(pParameterName string) error {
 	log.Println("InsertRecords (-)")
 	return nil
 }
+
+
+func UpdateRecords(pParameterName string) error {
+	// Log the start of the InsertRecords function
+	log.Println("UpdateRecords (+)")
+
+	// Establish a connection to the database using a connection key
+	lDb, lErr := ftdb.LocalDbConnect(ftdb.MariaFTPRD)
+	if lErr != nil {
+		// Log an error message if the database connection fails
+		log.Println("AUR-001 ", lErr.Error())
+		// Return an error with a specific code and the error message
+		return fmt.Errorf("UpdateRecords - (AUR-001) " + lErr.Error())
+	} else {
+		// Ensure the database connection is closed when the function exits
+		defer lDb.Close()
+
+		// Define the SQL insert query string (replace with actual query)
+		lSqlString := `//Enter Insert Query`
+
+		// Execute the SQL insert query with the provided parameter
+		lExecResult, lErr := lDb.Exec(lSqlString, pParameterName)
+		if lErr != nil {
+			// Log an error message if the query execution fails
+			log.Println("AUR-002 ", lErr.Error())
+			// Return an error with a specific code and the error message
+			return fmt.Errorf("UpdateRecords - (AUR-002) " + lErr.Error())
+		} else {
+			// Check the number of rows affected by the insert query
+			rowsAffected, lErr := lExecResult.RowsAffected()
+			if lErr != nil {
+				// Log an error message if fetching the affected rows count fails
+				log.Println("AUR-003 ", lErr.Error())
+			} else {
+				// Log the number of rows affected and a success message
+				log.Printf("UpdateRecords Rows affected: %d\n", rowsAffected)
+				log.Println("Record Updated successfully")
+			}
+		}
+	}
+
+	// Log the end of the UpdateRecords function
+	log.Println("UpdateRecords (-)")
+	return nil
+}
