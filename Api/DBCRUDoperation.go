@@ -230,7 +230,7 @@ func UpdateRecords(pParameterName string) error {
 	log.Println("UpdateRecords (+)")
 
 	// Establish a connection to the database using a connection key
-	lDb, lErr := ftdb.LocalDbConnect(ftdb.MariaFTPRD)
+	lDb, lErr := DBConnection("key")
 	if lErr != nil {
 		// Log an error message if the database connection fails
 		log.Println("AUR-001 ", lErr.Error())
