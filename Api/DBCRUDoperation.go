@@ -28,7 +28,7 @@ func SelectRecordsMethod(pParameterName string) (lVariable string, lErr error) {
 	log.Println("SelectRecordsMethod (+)")
 
 	// Connect to the database using a connection key
-	lDb, lErr := DBConnection("key")
+	lDb, lErr := DBConnection()
 	if lErr != nil {
 		// Log an error message if the database connection fails
 		log.Println("ASRM:001", lErr.Error())
@@ -104,7 +104,7 @@ func InsertUpdateMethod(pParameterName, pFlag string) error {
 	log.Println("InsertUpdateMethod (+)")
 
 	// Establish a connection to the database using a connection key
-	lDb, lErr := DBConnection("key")
+	lDb, lErr := DBConnection()
 	if lErr != nil {
 		// Log an error message if the database connection fails
 		log.Println("AIUM-001 ", lErr.Error())
@@ -139,13 +139,13 @@ func InsertUpdateMethod(pParameterName, pFlag string) error {
 		return fmt.Errorf("InsertUpdateMethod - (AIUM-002) " + lErr.Error())
 	} else {
 		// Check the number of rows affected by the insert or update query
-		rowsAffected, _ := lExecResult.RowsAffected()
+		lRowsAffected, _ := lExecResult.RowsAffected()
 		if lErr != nil {
 			// Log an error message if fetching the affected rows count fails
 			log.Println("AIUM-003 ", lErr.Error())
 		} else {
 			// Log the number of rows affected and a success message
-			log.Printf("InsertUpdateMethod Rows affected: %d\n", rowsAffected)
+			log.Printf("InsertUpdateMethod Rows affected: %d\n", lRowsAffected)
 			log.Println("Record Inserted or Updated successfully")
 		}
 	}
@@ -173,7 +173,7 @@ func InsertRecords(pParameterName string) error {
 	log.Println("InsertRecords (+)")
 
 	// Establish a connection to the database using a connection key
-	lDb, lErr := DBConnection("key")
+	lDb, lErr := DBConnection()
 	if lErr != nil {
 		// Log an error message if the database connection fails
 		log.Println("AIR-001 ", lErr.Error())
@@ -195,13 +195,13 @@ func InsertRecords(pParameterName string) error {
 			return fmt.Errorf("InsertRecords - (AIR-002) " + lErr.Error())
 		} else {
 			// Check the number of rows affected by the insert query
-			rowsAffected, lErr := lExecResult.RowsAffected()
+			lRowsAffected, lErr := lExecResult.RowsAffected()
 			if lErr != nil {
 				// Log an error message if fetching the affected rows count fails
 				log.Println("AIR-003 ", lErr.Error())
 			} else {
 				// Log the number of rows affected and a success message
-				log.Printf("InsertRecords Rows affected: %d\n", rowsAffected)
+				log.Printf("InsertRecords Rows affected: %d\n", lRowsAffected)
 				log.Println("Record Inserted successfully")
 			}
 		}
@@ -230,7 +230,7 @@ func UpdateRecords(pParameterName string) error {
 	log.Println("UpdateRecords (+)")
 
 	// Establish a connection to the database using a connection key
-	lDb, lErr := DBConnection("key")
+	lDb, lErr := DBConnection()
 	if lErr != nil {
 		// Log an error message if the database connection fails
 		log.Println("AUR-001 ", lErr.Error())
@@ -252,13 +252,13 @@ func UpdateRecords(pParameterName string) error {
 			return fmt.Errorf("UpdateRecords - (AUR-002) " + lErr.Error())
 		} else {
 			// Check the number of rows affected by the update query
-			rowsAffected, lErr := lExecResult.RowsAffected()
+			lRowsAffected, lErr := lExecResult.RowsAffected()
 			if lErr != nil {
 				// Log an error message if fetching the affected rows count fails
 				log.Println("AUR-003 ", lErr.Error())
 			} else {
 				// Log the number of rows affected and a success message
-				log.Printf("UpdateRecords Rows affected: %d\n", rowsAffected)
+				log.Printf("UpdateRecords Rows affected: %d\n", lRowsAffected)
 				log.Println("Record Updated successfully")
 			}
 		}
