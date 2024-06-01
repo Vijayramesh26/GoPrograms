@@ -213,8 +213,20 @@ func InsertRecords(pParameterName string) error {
 }
 
 
+// Step-by-step comments for UpdateRecords:
+// Step 1: Log the start of the function to track its execution.
+// Step 2: Establish a connection to the database using a predefined connection key.
+// Step 3: If the connection fails, log the error and return it with a specific error code.
+// Step 4: Ensure the database connection is closed when the function exits to avoid leaks.
+// Step 5: Prepare the SQL update query string (replace with actual query).
+// Step 6: Execute the SQL update query with the given parameter.
+// Step 7: If executing the query fails, log the error and return it with a specific error code.
+// Step 8: Retrieve and log the number of rows affected by the update query.
+// Step 9: If retrieving the affected rows count fails, log the error.
+// Step 10: Log the end of the function and return any error encountered.
+
 func UpdateRecords(pParameterName string) error {
-	// Log the start of the InsertRecords function
+	// Log the start of the UpdateRecords function
 	log.Println("UpdateRecords (+)")
 
 	// Establish a connection to the database using a connection key
@@ -228,10 +240,10 @@ func UpdateRecords(pParameterName string) error {
 		// Ensure the database connection is closed when the function exits
 		defer lDb.Close()
 
-		// Define the SQL insert query string (replace with actual query)
-		lSqlString := `//Enter Insert Query`
+		// Define the SQL update query string (replace with actual query)
+		lSqlString := `//Enter Update Query`
 
-		// Execute the SQL insert query with the provided parameter
+		// Execute the SQL update query with the provided parameter
 		lExecResult, lErr := lDb.Exec(lSqlString, pParameterName)
 		if lErr != nil {
 			// Log an error message if the query execution fails
@@ -239,7 +251,7 @@ func UpdateRecords(pParameterName string) error {
 			// Return an error with a specific code and the error message
 			return fmt.Errorf("UpdateRecords - (AUR-002) " + lErr.Error())
 		} else {
-			// Check the number of rows affected by the insert query
+			// Check the number of rows affected by the update query
 			rowsAffected, lErr := lExecResult.RowsAffected()
 			if lErr != nil {
 				// Log an error message if fetching the affected rows count fails
