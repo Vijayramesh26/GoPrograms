@@ -43,7 +43,7 @@ func TestApi(w http.ResponseWriter, r *http.Request) {
 				lRespRec.ErrMsg = "TestApi:001" + lErr.Error()
 			} else {
 				// Unmarshal response data
-				json.Unmarshal(lBody, &lRespRec)
+				lErr:=json.Unmarshal(lBody, &lRespRec)
 				if lErr != nil {
 					log.Println("TestApi:001" + lErr.Error())
 					lRespRec.Status = common.ErrorCode
