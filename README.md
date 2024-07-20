@@ -10,7 +10,7 @@ Clone this repository to your local machine using Git:
 bash
 Copy code
 git clone https://github.com/Vijayramesh26/GoPrograms.git
-cd go-programs
+cd GoPrograms
  
 Database Connection
 This Repo demonstrates how to connect to a MariaDB database using Go. Make sure you have the github.com/go-sql-driver/mysql package installed has been shown on above code section.
