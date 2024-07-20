@@ -9,7 +9,7 @@ Clone this repository to your local machine using Git:
 
 bash
 Copy code
-git clone https://github.com/vijayramesh26/go-programs.git
+git clone https://github.com/Vijayramesh26/GoPrograms.git
 cd go-programs
  
 Database Connection
